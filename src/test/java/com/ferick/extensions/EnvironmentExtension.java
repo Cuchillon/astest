@@ -35,7 +35,7 @@ public class EnvironmentExtension implements TestInstancePostProcessor, BeforeAl
         testContext.clearAdditionalConfigurations();
     }
 
-    public void injectModulesContext(Object testInstance)
+    private void injectModulesContext(Object testInstance)
             throws IllegalAccessException {
         var fields = new ArrayList<Field>();
         aggregateContextFields(testInstance.getClass(), fields);
@@ -51,7 +51,7 @@ public class EnvironmentExtension implements TestInstancePostProcessor, BeforeAl
         }
     }
 
-    public LinkedHashSet<String> checkAdditionalConfigurations(Object testInstance) {
+    private LinkedHashSet<String> checkAdditionalConfigurations(Object testInstance) {
         var fileNames = new LinkedHashSet<String>();
         aggregateAdditionalConfigurations(testInstance.getClass(), fileNames);
         testContext.addConfigurations(List.copyOf(fileNames));
