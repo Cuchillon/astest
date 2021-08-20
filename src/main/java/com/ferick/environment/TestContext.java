@@ -3,6 +3,7 @@ package com.ferick.environment;
 import com.ferick.config.ConfigLoader;
 import com.ferick.config.ConfigUtils;
 import com.ferick.config.PropertyLoader;
+import com.ferick.helpers.HelperManager;
 import com.ferick.reporting.AllureLogger;
 import org.apache.commons.configuration2.CombinedConfiguration;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -25,6 +26,7 @@ public class TestContext {
 
     private final ExtensionContext.Store store;
     private final AllureLogger logger;
+    private HelperManager helpers;
 
     public TestContext(ExtensionContext.Store store, AllureLogger logger) {
         this.store = store;
@@ -66,6 +68,10 @@ public class TestContext {
 
     public PropertyLoader properties() {
         return propertyLoader;
+    }
+
+    public HelperManager helpers() {
+        return (helpers == null) ? helpers = new HelperManager(this) : helpers;
     }
 
     public void write(String message) {
