@@ -22,6 +22,7 @@ public class PetTest extends AbstractTest {
 
     private static final String PET_TEMPLATE_PATH = "pet/pet-template.txt";
     private static final String PET_SCHEMA_PATH = "schemas/pet/pet-schema.json";
+    private static final String PET_ID_VAR = "petId";
 
     @Test
     @Order(1)
@@ -39,7 +40,24 @@ public class PetTest extends AbstractTest {
                 .body(JsonSchemaValidator.matchesJsonSchemaInClasspath(PET_SCHEMA_PATH))
                 .extract().as(Pet.class);
 
+        context.setVariable(PET_ID_VAR, actualPet.getId());
+
         var expectedPet = JsonTransformer.fromJson(body, Pet.class);
         assertEquals(expectedPet, actualPet);
+    }
+
+    @Test
+    @Order(2)
+    @DisplayName("Removing a pet from the store")
+    public void removePet() {
+        var petId = context.getVariable(PET_ID_VAR)
+                .orElseThrow(() -> new IllegalStateException("Pet id is missing"));
+
+        given().spec(baseMethods().getBaseSpecification())
+                .pathParam("petId", petId)
+                .when()
+                .delete(PetStoreService.Pet.BY_ID)
+                .then().log().all()
+                .statusCode(HttpStatus.SC_OK);
     }
 }

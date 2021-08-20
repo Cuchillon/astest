@@ -7,12 +7,12 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Pet {
 
-    public Integer id;
-    public Category category;
-    public String name;
-    public List<String> photoUrls;
-    public List<Tag> tags;
-    public String status;
+    private Integer id;
+    private Category category;
+    private String name;
+    private List<String> photoUrls;
+    private List<Tag> tags;
+    private String status;
 
     public Integer getId() {
         return id;
