@@ -1,0 +1,18 @@
+{
+  "id": ${-random num 7-},
+  "category": {
+    "id": ${-random num 4-},
+    "name": "${-random alph 8-}"
+  },
+  "name": "doggie",
+  "photoUrls": [
+    "http://${-random alph 8-}.com"
+  ],
+  "tags": [
+    {
+      "id": ${-random num 4-},
+      "name": "${-random alph 8-}"
+    }
+  ],
+  "status": "available"
+}

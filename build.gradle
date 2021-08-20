@@ -8,6 +8,7 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 allure {
@@ -30,6 +31,7 @@ dependencies {
     implementation 'commons-beanutils:commons-beanutils:1.9.4'
     implementation 'commons-io:commons-io:2.8.0'
     implementation 'org.yaml:snakeyaml:1.26'
+    implementation 'com.github.Cuchillon:datagen:e0a5896b25542234800a988e29e2534ae56791ac'
     implementation 'org.junit.jupiter:junit-jupiter-params:5.7.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'

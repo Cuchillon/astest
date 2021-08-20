@@ -1,5 +1,5 @@
 {
-  "petStore": {
+  "petstore": {
     "baseUrl": "http://petstore.swagger.io"
   }
 }
