@@ -13,7 +13,7 @@ import org.junit.jupiter.api.*;
 import java.util.HashMap;
 
 import static io.restassured.RestAssured.given;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Tag("pet")
 @Configuration("petstore.yml")
@@ -41,6 +41,7 @@ public class PetTest extends AbstractTest {
         context.setVariable(PET_ID_VAR, actualPet.getId());
 
         var expectedPet = JsonTransformer.fromJson(body, Pet.class);
+        assertTrue(checkPetExists(actualPet.getId()), "Pet was not added");
         assertEquals(expectedPet, actualPet);
     }
 
@@ -57,5 +58,24 @@ public class PetTest extends AbstractTest {
                 .delete(PetStoreService.Pet.BY_ID)
                 .then().log().all()
                 .statusCode(HttpStatus.SC_OK);
+
+        assertFalse(checkPetExists((Integer) petId), "Pet was not deleted");
+    }
+
+    private Boolean checkPetExists(Integer petId) {
+        int statusCode = given().spec(baseMethods().getBaseSpecification())
+                .pathParam("petId", petId)
+                .when()
+                .get(PetStoreService.Pet.BY_ID)
+                .then()
+                .extract().statusCode();
+
+        if (statusCode == HttpStatus.SC_OK) {
+            return true;
+        } else if (statusCode == HttpStatus.SC_NOT_FOUND) {
+            return false;
+        } else {
+            throw new IllegalStateException("Checking pet existence returned unexpected status " + statusCode);
+        }
     }
 }
