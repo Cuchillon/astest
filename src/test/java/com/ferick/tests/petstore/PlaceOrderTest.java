@@ -20,7 +20,7 @@ import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Tag("placeOrder")
-@Configuration("petstore.json")
+@Configuration("petstore.yml")
 public class PlaceOrderTest extends AbstractTest {
 
     protected static final String ORDER_TEMPLATE_PATH = "store/order-template.txt";

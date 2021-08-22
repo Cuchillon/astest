@@ -16,7 +16,7 @@ import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Tag("pet")
-@Configuration("petstore.json")
+@Configuration("petstore.yml")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PetTest extends AbstractTest {
 

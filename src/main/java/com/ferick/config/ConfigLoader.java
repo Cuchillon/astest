@@ -17,7 +17,7 @@ public class ConfigLoader {
 
     private static final String CONFIG_FILES_PATH = "src/test/resources/configs/";
     private static final String SYSTEM_CONFIG = "system-properties";
-    private static final String COMMON_CONFIG = "common.json";
+    private static final String COMMON_CONFIG = "common.yml";
     private static final String CONFIG_NAME_SUFFIX = "-config";
 
     private final Logger log = LoggerFactory.getLogger(ConfigLoader.class);
@@ -86,7 +86,7 @@ public class ConfigLoader {
         var params = new Parameters();
 
         FileBasedConfigurationBuilder<FileBasedConfiguration> localProperties =
-                new FileBasedConfigurationBuilder<FileBasedConfiguration>(JSONConfiguration.class, null, true)
+                new FileBasedConfigurationBuilder<FileBasedConfiguration>(YAMLConfiguration.class, null, true)
                         .configure(params.fileBased().setFile(new File(CONFIG_FILES_PATH + COMMON_CONFIG)));
 
         var configuration = new CombinedConfiguration();

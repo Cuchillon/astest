@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Tag("findOrder")
-@Configuration("petstore.json")
+@Configuration("petstore.yml")
 public class FindOrderTest extends AbstractTest {
 
     private static final Integer BIG_ORDER_ID = 11;
