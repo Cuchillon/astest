@@ -10,6 +10,9 @@ import javax.inject.Inject;
 @ExtendWith(EnvironmentExtension.class)
 public abstract class AbstractTest {
 
+    protected static final String PET_TEMPLATE_PATH = "pet/pet-template.txt";
+    protected static final String PET_ID_VAR = "petId";
+
     @Inject
     protected TestContext context;
 

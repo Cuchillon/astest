@@ -1,0 +1,8 @@
+{
+  "id": ${-random num 7-},
+  "petId": ${-set petId-},
+  "quantity": 1,
+  "shipDate": "2021-08-22T11:23:10.384Z",
+  "status": "placed",
+  "complete": true
+}

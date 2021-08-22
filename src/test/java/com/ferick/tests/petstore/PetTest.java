@@ -20,9 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PetTest extends AbstractTest {
 
-    private static final String PET_TEMPLATE_PATH = "pet/pet-template.txt";
     private static final String PET_SCHEMA_PATH = "schemas/pet/pet-schema.json";
-    private static final String PET_ID_VAR = "petId";
 
     @Test
     @Order(1)
