@@ -20,6 +20,7 @@ public class BaseMethods {
     private static final Path RESOURCE_PATH = Paths.get("src/test/resources");
     private static final Path TESTDATA_PATH = Paths.get("data");
     private static final String API_KEY_HEADER = "api_key";
+    private static final String API_KEY_PATH = "common.apiKey";
 
     private final TestContext context;
 
@@ -28,7 +29,7 @@ public class BaseMethods {
     }
 
     public RequestSpecification getBaseSpecification() {
-        var apiKey = context.properties().loadStringProperty(API_KEY_HEADER);
+        var apiKey = context.properties().loadStringProperty(API_KEY_PATH);
         return new RequestSpecBuilder()
                 .setBaseUri(getBaseUrl())
                 .setAccept(ContentType.JSON)

@@ -1,3 +1,4 @@
 ---
 # This file is used for common configuration for all suites of tests
-api_key: 'special-key'
+common:
+  apiKey: 'special-key'

@@ -39,7 +39,7 @@ dependencies {
 }
 
 test {
-    def props = ['common.baseUrl', 'api_key']
+    def props = ['common.baseUrl', 'common.apiKey']
     jvmArgs += loadProperties(props)
     def tagString = project.hasProperty('tags') ? project.tags : ''
     String[] tags = !tagString.isEmpty() ? tagString.split(',') : []
