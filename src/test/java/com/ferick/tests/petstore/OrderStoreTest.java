@@ -44,7 +44,7 @@ public class OrderStoreTest extends AbstractTest {
     @Test
     @DisplayName("Placing an order to buy a pet")
     public void placeOrder() {
-        var petId = context.getStringVariable(PET_ID_VAR);
+        var petId = String.valueOf(context.getIntVariable(PET_ID_VAR));
         var body = baseMethods().getBodyFromTemplate(ORDER_TEMPLATE_PATH, Utilities.asMap(PET_ID_VAR, petId));
 
         var actualOrder = given().spec(baseMethods().getBaseSpecification())
