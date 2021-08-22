@@ -19,9 +19,9 @@ import java.util.HashMap;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Tag("order")
+@Tag("placeOrder")
 @Configuration("petstore.json")
-public class OrderStoreTest extends AbstractTest {
+public class PlaceOrderTest extends AbstractTest {
 
     protected static final String ORDER_TEMPLATE_PATH = "store/order-template.txt";
 
@@ -51,7 +51,7 @@ public class OrderStoreTest extends AbstractTest {
                 .contentType(ContentType.JSON)
                 .body(body)
                 .when()
-                .post(PetStoreService.Pet.BASIC)
+                .post(PetStoreService.Store.ORDER_BASIC)
                 .then()
                 .statusCode(HttpStatus.SC_OK)
                 .extract().as(Order.class);

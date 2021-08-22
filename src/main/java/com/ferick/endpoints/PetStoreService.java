@@ -9,5 +9,6 @@ public final class PetStoreService {
 
     public static class Store {
         public static final String ORDER_BASIC = "/store/order";
+        public static final String ORDER_BY_ID = "/store/order/{orderId}";
     }
 }
